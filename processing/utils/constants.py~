@@ -1,0 +1,63 @@
+from pathlib import Path
+from itertools import combinations
+# THIS FOLDER CONTAINS ALL THE PROJECT CONSTANTS
+
+# THIS IS FOR THE IO OF THE DATA
+PICKLE_PROCESSED_SIGNALS = Path("./output_data/unpacked_signals/pickle")
+MAT_PROCESSED_SIGNALS = Path("./output_data/unpacked_signals/mat")
+EDF_FILE_PATH = Path("./input_data/orig_data/")
+PATIENT_CSV_PATH = Path("./input_data/RECORDS")
+
+# CONSTANTS
+SAMPLING_FREQ = 2048  # THE ORIGINAL SAMPLING FREQUENCY
+RE_SAMPLE_FREQ = 100  # THE RESAMPLING FREQUENCY
+
+# THE ORDER OF THE CHANNELS IN THE EDF FILES BY INDEX
+CHANNELS = [
+    "EEG PO8",
+    "EEG PO7",
+    "EEG P8",
+    "EEG P7",
+    "EEG O1",
+    "EEG O2",
+    "EEG PO3",
+    "EEG PO4",
+]
+LEFT_HALF_PROBES = ["O1", "PO7", "PO3", "P7"]
+RIGHT_HALF_PROBES = ["O2", "PO8", "PO4", "P8"]
+
+# LEFT RIGHT PROBE TEST
+PROBE_MAT_PROCESSED_SIGNALS = Path(
+    "./output_data/left_right_unpacked_signals/mat")
+PROBE_PICKLE_PROCESSED_SIGNALS = Path(
+    "./output_data/left_right_unpacked_signals/pickle")
+
+# PATH TO THE FIRST SUBJECT IN THE 5-HZ file
+KURAMOTO_INDEX_SUBJECT_PATH = Path("./output_data/unpacked_signals/mat/5-Hz")
+
+# FILE PATH FOR IMAGE SAVING OF THE UNIT CIRCLE
+PLOT_KURAMOTO_PATH = Path("./plotting/kuramoto")
+
+# PROBE COMBINATIONS
+_COMBINATIONS = range(1, 9)
+ALL_COMBINATIONS = [(comb[0], comb[1])
+                    for comb in combinations(_COMBINATIONS, 2)]
+# REGEX THAT MATCHES PROBE COMBINATION (BETWEEN BRACKETS)
+PROBE_COMBINATION_REGEX = r"\((.*?)\)"
+BAYES_DATA_PATH = Path("./input_data/bayes_data")
+
+# MEAN FREQUENCY PARAMETERS PATH
+FREQUENCY_MEAN_PATH = Path("./output_data/freq_mean")
+
+# MEAN STATE PARAMETERS PATH
+STATE_MEAN_PATH = Path("./output_data/state_mean")
+
+# FREQ COUPLING MAPS
+FREQUENCY_MAP_PATH = Path('./plotting/freq_coupling_maps')
+
+# STATE COUPLING MAPS
+STATE_MAP_PATH = Path('./plotting/state_coupling_maps')
+
+# PHASE OUTPUT FOLDER
+PHASE_OUTPUT_MAT_PAT = Path("./output_data/phases/mat")
+PHASE_OUTPUT_PICKLE_PATH = Path("./output_data/phases/pickle")
